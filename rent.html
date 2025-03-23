@@ -6,25 +6,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <style>
     body {
-      margin: 0;
       background: #111;
       color: #fff;
       font-family: sans-serif;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
       text-align: center;
-      flex-direction: column;
       padding: 20px;
     }
     .valid { color: #0f0; }
     .expired { color: #f00; }
+    .btn {
+      margin: 10px;
+      padding: 10px 20px;
+      background: #00ffff;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background: #00cccc;
+    }
   </style>
 </head>
 <body>
   <h1>PrankTag Rent System</h1>
   <p id="status">Tag wird überprüft...</p>
+  <div id="expiredActions" style="display:none;">
+    <a href="https://pranktag.com" class="btn">Tag verlängern</a>
+    <a href="https://pranktag.com" class="btn">Tag zurücksenden</a>
+  </div>
 
   <script>
     const params = new URLSearchParams(window.location.search);
@@ -37,6 +54,7 @@
 
         if (!tag) {
           document.getElementById("status").innerHTML = "<span class='expired'>Tag-ID nicht gefunden.</span>";
+          document.getElementById("expiredActions").style.display = "block";
           return;
         }
 
@@ -44,13 +62,24 @@
         const expires = new Date(tag.expires);
 
         if (now < expires) {
-          document.getElementById("status").innerHTML = `<span class='valid'>Tag aktiv: <b>${tag.name}</b><br>Gültig bis: ${expires.toLocaleString()}</span>`;
+          // Entscheide anhand der Länge der ID
+          if (tagId.length === 7) {
+            // 4-stellig = Edition 2
+            window.location.href = `edition2.html?tag=${tagId}`;
+          } else if (tagId.length === 6) {
+            // 3-stellig = Edition 1
+            window.location.href = `edition1.html?tag=${tagId}`;
+          } else {
+            document.getElementById("status").innerHTML = "<span class='expired'>Ungültiges Tag-Format.</span>";
+          }
         } else {
           document.getElementById("status").innerHTML = `<span class='expired'>Tag abgelaufen: <b>${tag.name}</b><br>Abgelaufen am: ${expires.toLocaleString()}</span>`;
+          document.getElementById("expiredActions").style.display = "block";
         }
       })
       .catch(() => {
         document.getElementById("status").innerHTML = "<span class='expired'>Fehler beim Laden der Daten.</span>";
+        document.getElementById("expiredActions").style.display = "block";
       });
   </script>
 </body>
