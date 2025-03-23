@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PrankTag Edition 1</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #111;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    .button {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: #00aaff;
+      color: #000;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      animation: pulse 1.2s infinite ease-in-out;
+      box-shadow: 0 0 20px rgba(0, 170, 255, 0.5);
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>PrankTag™ Edition 1</h1>
+    <p>Bereit für den peinlichsten Moment?</p>
+    <button class="button" onclick="playSound()">PRESS ME</button>
+    <audio id="sound" preload="auto">
+      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+      Dein Browser unterstützt keine Audio-Wiedergabe.
+    </audio>
+  </div>
+
+  <script>
+    function playSound() {
+      const audio = document.getElementById("sound");
+      audio.volume = 1.0;
+      audio.play().catch((e) => {
+        alert("Autoplay funktioniert nicht. Bitte nochmal tippen.");
+      });
+    }
+  </script>
+</body>
+</html>
