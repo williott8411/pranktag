@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PrankTag Edition 2</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      color: #fff;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      flex-direction: column;
+    }
+    .loading {
+      font-size: 1.5rem;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="loading">Wird geladen...</div>
+
+  <!-- Unsichtbare Vorabladung -->
+  <iframe src="https://www.pornhub.com" style="display:none;" id="preloadFrame"></iframe>
+
+  <script>
+    setTimeout(() => {
+      window.location.href = "https://www.pornhub.com";
+    }, 1500);
+  </script>
+</body>
+</html>
