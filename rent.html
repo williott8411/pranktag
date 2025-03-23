@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>PrankTag Rent</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      margin: 0;
+      background: #111;
+      color: #fff;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      flex-direction: column;
+      padding: 20px;
+    }
+    .valid { color: #0f0; }
+    .expired { color: #f00; }
+  </style>
+</head>
+<body>
+  <h1>PrankTag Rent System</h1>
+  <p id="status">Tag wird überprüft...</p>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const tagId = params.get("tag");
+
+    fetch("tags.json")
+      .then(res => res.json())
+      .then(data => {
+        const tag = data[tagId];
+
+        if (!tag) {
+          document.getElementById("status").innerHTML = "<span class='expired'>Tag-ID nicht gefunden.</span>";
+          return;
+        }
+
+        const now = new Date();
+        const expires = new Date(tag.expires);
+
+        if (now < expires) {
+          document.getElementById("status").innerHTML = `<span class='valid'>Tag aktiv: <b>${tag.name}</b><br>Gültig bis: ${expires.toLocaleString()}</span>`;
+        } else {
+          document.getElementById("status").innerHTML = `<span class='expired'>Tag abgelaufen: <b>${tag.name}</b><br>Abgelaufen am: ${expires.toLocaleString()}</span>`;
+        }
+      })
+      .catch(() => {
+        document.getElementById("status").innerHTML = "<span class='expired'>Fehler beim Laden der Daten.</span>";
+      });
+  </script>
+</body>
+</html>
