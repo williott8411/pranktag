@@ -20,6 +20,7 @@
       justify-content: center;
       align-items: center;
       text-align: center;
+      overflow: hidden;
     }
 
     .button {
@@ -62,7 +63,7 @@
   <button class="button" onclick="playSound()">PRESS ME</button>
 
   <audio id="sound" preload="auto">
-    <source src="https://pranktag.info/sound/cringe-edition1.mp3" type="audio/mpeg">
+    <source src="https://pranktag.info/sounds/edition1.mp3" type="audio/mpeg">
     Dein Browser unterstützt keine Audio-Wiedergabe.
   </audio>
 
@@ -76,17 +77,26 @@
   <script>
     const audio = document.getElementById("sound");
 
-    // Versuche Autoplay beim Laden
+    // Versuch Autoplay direkt beim Laden
     window.addEventListener('load', () => {
-      audio.volume = 1.0;
-      audio.play().catch(() => {
-        console.log("Autoplay blockiert – Nutzer muss tippen.");
-      });
+      setTimeout(() => {
+        audio.volume = 1.0;
+        audio.play().then(() => {
+          console.log("Autoplay erfolgreich.");
+        }).catch(() => {
+          console.log("Autoplay blockiert – Knopf bleibt aktiv.");
+        });
+      }, 400); // leichter Delay verbessert Erfolg auf Android
     });
 
+    // Manuelles Abspielen nach Interaktion
     function playSound() {
       audio.volume = 1.0;
-      audio.play();
+      audio.play().then(() => {
+        console.log("Sound manuell gestartet.");
+      }).catch(() => {
+        alert("Sound konnte nicht abgespielt werden.");
+      });
     }
   </script>
 </body>
