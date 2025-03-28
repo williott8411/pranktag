@@ -2,28 +2,29 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PrankTag Edition 1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Edition 1</title>
+  <meta name="theme-color" content="#111" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
   <style>
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
       background-color: #111;
       color: #fff;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: sans-serif;
+      height: 100%;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
       text-align: center;
     }
 
-    .container {
-      padding: 20px;
-    }
-
     .button {
-      width: 180px;
-      height: 180px;
+      width: 160px;
+      height: 160px;
       border-radius: 50%;
       background: #00aaff;
       color: #000;
@@ -40,26 +41,52 @@
       50% { transform: scale(1.05); }
       100% { transform: scale(1); }
     }
+
+    .footer {
+      position: absolute;
+      bottom: 12px;
+      font-size: 0.8rem;
+      color: #aaa;
+    }
+
+    .footer a {
+      color: #00aaff;
+      text-decoration: none;
+      font-weight: bold;
+      display: block;
+      margin-top: 4px;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>PrankTag™ Edition 1</h1>
-    <p>Bereit für den peinlichsten Moment?</p>
-    <button class="button" onclick="playSound()">PRESS ME</button>
-    <audio id="sound" preload="auto">
-      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-      Dein Browser unterstützt keine Audio-Wiedergabe.
-    </audio>
+  <button class="button" onclick="playSound()">PRESS ME</button>
+
+  <audio id="sound" preload="auto">
+    <source src="https://pranktag.info/sound/cringe-edition1.mp3" type="audio/mpeg">
+    Dein Browser unterstützt keine Audio-Wiedergabe.
+  </audio>
+
+  <div class="footer">
+    Powered by PrankTag<br>
+    <a href="https://pranktag.com" target="_blank">
+      Hol dir deinen eigenen Cringe-Moment – jetzt sichern
+    </a>
   </div>
 
   <script>
-    function playSound() {
-      const audio = document.getElementById("sound");
+    const audio = document.getElementById("sound");
+
+    // Versuche Autoplay beim Laden
+    window.addEventListener('load', () => {
       audio.volume = 1.0;
-      audio.play().catch((e) => {
-        alert("Autoplay funktioniert nicht. Bitte nochmal tippen.");
+      audio.play().catch(() => {
+        console.log("Autoplay blockiert – Nutzer muss tippen.");
       });
+    });
+
+    function playSound() {
+      audio.volume = 1.0;
+      audio.play();
     }
   </script>
 </body>
