@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PrankTag</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #111;
+      color: #fff;
+      font-family: sans-serif;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .button {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: #00aaff;
+      color: #000;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      animation: pulse 1.2s infinite ease-in-out;
+      box-shadow: 0 0 20px rgba(0, 170, 255, 0.5);
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    .footer {
+      position: absolute;
+      bottom: 12px;
+      font-size: 0.8rem;
+      color: #aaa;
+    }
+    .footer a {
+      color: #00aaff;
+      text-decoration: none;
+      font-weight: bold;
+      display: block;
+      margin-top: 4px;
+    }
+    .message, .container {
+      max-width: 600px;
+      padding: 30px;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+    .container {
+      background-color: #1e1e1e;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+    }
+    h1 { font-size: 2.5rem; margin-bottom: 10px; }
+    p { font-size: 1.1rem; line-height: 1.6; margin: 15px 0; }
+    .button-link {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background-color: #00ffff;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .button-link:hover {
+      background-color: #00cccc;
+    }
+    #sound { display: none; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div id="app">Lade...</div>
+
+  <audio id="sound" preload="auto">
+    <source src="https://pranktag.info/sounds/edition1.mp3" type="audio/mpeg">
+    Dein Browser unterstützt keine Audio-Wiedergabe.
+  </audio>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const tagId = params.get("tag");
+    const app = document.getElementById("app");
+    const audio = document.getElementById("sound");
+    const now = new Date();
+
+    if (!tagId) {
+      app.innerHTML = `
+        <div class="container">
+          <h1>PrankTag™</h1>
+          <p>Der digitale Schlüsselanhänger, der Chaos auslöst – mit nur einem Scan.</p>
+          <p>Ob lauter Sound, peinliche Webseiten oder völlige Verwirrung – <strong>PrankTag™</strong> bringt den maximal unangenehmen Moment direkt aufs Smartphone.</p>
+          <p>Jetzt limitiert verfügbar:</p>
+          <a href="https://pranktag.com" class="button-link">Jetzt kaufen</a>
+        </div>
+      `;
+    } else {
+      fetch("tag.json")
+        .then(res => res.json())
+        .then(data => {
+          const tag = data[tagId];
+          if (!tag) {
+            app.innerHTML = `<div class="message">Tag <b>${tagId}</b> nicht gefunden.</div>`;
+            return;
+          }
+          if (!tag.active) {
+            app.innerHTML = `<div class="message">Tag <b>${tagId}</b> ist nicht aktiv.</div>`;
+            return;
+          }
+
+          const isRent = tag.rent === true;
+          const edition = tag.edition || "e1";
+          const rentdate = tag.rentdate;
+
+          if (isRent) {
+            if (!rentdate) {
+              app.innerHTML = `<div class="message">Miet-Tag ohne Ablaufdatum. Bitte Support kontaktieren.</div>`;
+              return;
+            }
+            const rentTime = new Date(rentdate.replace(":", "T") + ":00");
+
+            if (now > rentTime) {
+              app.innerHTML = `
+                <div class="message">
+                  Der Miet-Tag <strong>${tag.tagid}</strong> ist abgelaufen.<br><br>
+                  Ablaufdatum: <strong>${rentdate.replace(":", " um ")}</strong><br><br>
+                  Du kannst ihn kostenlos zurückschicken oder <a href="https://pranktag.com">erneuern</a>.
+                </div>`;
+              return;
+            }
+          }
+
+          if (edition === "e1") {
+            // Edition 1 Inhalt direkt hier
+            app.innerHTML = `
+              <button class="button" onclick="playSound()">PRESS ME</button>
+              <div class="footer">
+                Powered by PrankTag<br>
+                <a href="https://pranktag.com" target="_blank">
+                  Hol dir deinen eigenen Cringe-Moment – jetzt sichern
+                </a>
+              </div>
+            `;
+
+            // Autoplay-Versuch
+            setTimeout(() => {
+              audio.volume = 1.0;
+              audio.play().then(() => {
+                console.log("Autoplay erfolgreich.");
+              }).catch(() => {
+                console.log("Autoplay blockiert – Knopf bleibt aktiv.");
+              });
+            }, 400);
+          }
+
+          if (edition === "e2" || edition === "e3") {
+            // Externe Weiterleitung mit Fallback
+            const url = "https://pornhub.com"; // Edition 2 & 3 Ziel
+            let attempts = 1;
+            window.location.href = url;
+
+            const retryInterval = setInterval(() => {
+              if (document.visibilityState === "visible") {
+                attempts++;
+                if (attempts <= 3) {
+                  window.location.href = url;
+                } else {
+                  clearInterval(retryInterval);
+                  app.innerHTML = `
+                    <div class="message">
+                      Weiterleitung fehlgeschlagen. <a href="${url}">Hier klicken!</a>.
+                    </div>`;
+                }
+              } else {
+                clearInterval(retryInterval);
+              }
+            }, 400);
+          }
+        })
+        .catch(err => {
+          app.innerHTML = `<div class="message">Fehler beim Laden der Tag-Daten.</div>`;
+          console.error(err);
+        });
+    }
+
+    function playSound() {
+      audio.volume = 1.0;
+      audio.play().then(() => {
+        console.log("Sound manuell gestartet.");
+      }).catch(() => {
+        alert("Sound konnte nicht abgespielt werden.");
+      });
+    }
+  </script>
+</body>
+</html>
