@@ -1,39 +1,39 @@
-
 <!DOCTYPE html>
-<html lang="de">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PrankTag Edition 2</title>
+  <meta charset="UTF-8">
+  <title>Weiterleitung...</title>
   <style>
-    body {
-      margin: 0;
-      background-color: #000;
-      color: #fff;
-      font-family: sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-      flex-direction: column;
-    }
-    .loading {
-      font-size: 1.5rem;
-      color: #ccc;
-    }
+    body { margin: 0; background: #fff; display: flex; align-items: center; justify-content: center; height: 100vh; }
+    #fallback { display: none; font-family: sans-serif; font-size: 18px; }
   </style>
 </head>
 <body>
-  <div class="loading">Wird geladen...</div>
-
-  <!-- Unsichtbare Vorabladung -->
-  <iframe src="https://www.pornhub.com" style="display:none;" id="preloadFrame"></iframe>
+  <div id="fallback">
+    Weiterleitung fehlgeschlagen. <a href="https://pornhub.com">Hier klicken!</a>.
+  </div>
 
   <script>
-    setTimeout(() => {
-      window.location.href = "https://www.pornhub.com";
-    }, 1500);
+    const url = "https://pornhub.com";
+    let attempts = 1;
+
+    // Sofortiger erster Versuch
+    window.location.href = url;
+
+    // Weitere Versuche nur, wenn die Seite nicht verlassen wurde
+    const retryInterval = setInterval(() => {
+      if (document.visibilityState === "visible") {
+        attempts++;
+        if (attempts <= 3) {
+          window.location.href = url;
+        } else {
+          clearInterval(retryInterval);
+          document.getElementById("fallback").style.display = "block";
+        }
+      } else {
+        clearInterval(retryInterval); // Wenn Seite verlassen wurde, nicht weiter versuchen
+      }
+    }, 400); // Zeitabstand zwischen den Versuchen
   </script>
 </body>
 </html>
