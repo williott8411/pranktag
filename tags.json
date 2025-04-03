@@ -1,15 +1,407 @@
 {
-  "tagmaincharacter": {
-    "name": "PrankTag Rent System williott8411",
-    "expires": "2025-04-30T23:59:59"
+  "tag001": {
+    "active": true,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag001",
+    "tagname": "PrankTag Rent System williott8411",
+    "edition": "e1",
+    "note": ""
   },
   "tag002": {
-    "name": "YYY",
-    "expires": "2024-12-01T00:00:00"
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag002",
+    "tagname": "Tag002",
+    "edition": "e1",
+    "note": ""
   },
   "tag003": {
-    "name": "ZZZ",
-    "expires": "2099-01-01T00:00:00"
+    "active": true,
+    "rent": true,
+    "rentdate": "2099-01-01:00:00",
+    "tagid": "tag003",
+    "tagname": "Tag003",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag004": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag004",
+    "tagname": "Name4",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag005": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag005",
+    "tagname": "Name5",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag006": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag006",
+    "tagname": "Name6",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag007": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag007",
+    "tagname": "Name7",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag008": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag008",
+    "tagname": "Name8",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag009": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag009",
+    "tagname": "Name9",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag010": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag010",
+    "tagname": "Name10",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag011": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag011",
+    "tagname": "Name11",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag012": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag012",
+    "tagname": "Name12",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag013": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag013",
+    "tagname": "Name13",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag014": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag014",
+    "tagname": "Name14",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag015": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag015",
+    "tagname": "Name15",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag016": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag016",
+    "tagname": "Name16",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag017": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag017",
+    "tagname": "Name17",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag018": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag018",
+    "tagname": "Name18",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag019": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag019",
+    "tagname": "Name19",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag020": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag020",
+    "tagname": "Name20",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag021": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag021",
+    "tagname": "Name21",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag022": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag022",
+    "tagname": "Name22",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag023": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag023",
+    "tagname": "Name23",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag024": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag024",
+    "tagname": "Name24",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag025": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag025",
+    "tagname": "Name25",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag026": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag026",
+    "tagname": "Name26",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag027": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag027",
+    "tagname": "Name27",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag028": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag028",
+    "tagname": "Name28",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag029": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag029",
+    "tagname": "Name29",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag030": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag030",
+    "tagname": "Name30",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag031": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag031",
+    "tagname": "Name31",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag032": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag032",
+    "tagname": "Name32",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag033": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag033",
+    "tagname": "Name33",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag034": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag034",
+    "tagname": "Name34",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag035": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag035",
+    "tagname": "Name35",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag036": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag036",
+    "tagname": "Name36",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag037": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag037",
+    "tagname": "Name37",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag038": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag038",
+    "tagname": "Name38",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag039": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag039",
+    "tagname": "Name39",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag040": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag040",
+    "tagname": "Name40",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag041": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag041",
+    "tagname": "Name41",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag042": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag042",
+    "tagname": "Name42",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag043": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag043",
+    "tagname": "Name43",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag044": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag044",
+    "tagname": "Name44",
+    "edition": "e1",
+    "note": ""
+  },
+  "tag045": {
+    "active": false,
+    "rent": false,
+    "rentdate": "",
+    "tagid": "tag045",
+    "tagname": "Name45",
+    "edition": "e1",
+    "note": ""
   }
 }
-
